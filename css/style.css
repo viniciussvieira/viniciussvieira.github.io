@@ -7,8 +7,8 @@
 
 html, body {
     height: 100%;
-    background: #dfe6e9;
-    color: #2d3436;
+    background: #0B0F19; /* preto profundo moderno */
+    color: #F1F5F9; /* branco suave */
     scroll-behavior: smooth;
 }
 
@@ -18,17 +18,17 @@ nav {
     left: 0;
     width: 100%;
     height: 70px;
-    background: #2d3436;
+    background: #111827; /* charcoal tech */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
     z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.6);
 }
 
 nav .logo {
-    color: #ffffff;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -40,15 +40,15 @@ nav ul {
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: #F1F5F9;
     text-decoration: none;
     transition: all 0.3s;
     padding-bottom: 3px;
 }
 
 nav ul li a:hover {
-    color: #00cec9;
-    border-bottom: 2px solid #00cec9;
+    color: #22D3EE; /* cyan elétrico */
+    border-bottom: 2px solid #22D3EE;
 }
 
 section {
@@ -71,8 +71,8 @@ section {
 .foto-perfil {
     width: 220px;
     border-radius: 50%;
-    border: 4px solid #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 4px solid #22D3EE; /* destaque tech */
+    box-shadow: 0 4px 20px rgba(34,211,238,0.2);
 }
 
 .sobre-texto {
@@ -86,7 +86,7 @@ section {
 }
 
 #sobre h3 {
-    color: #636e72;
+    color: #94A3B8; /* cinza tech */
     margin-bottom: 25px;
 }
 
@@ -103,30 +103,42 @@ section {
 }
 
 .btn {
-    background: #000;
-    color: #fff;
+    background: #22D3EE;
+    color: #0B0F19;
     padding: 10px 25px;
     border-radius: 8px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .btn:hover {
-    background: #01a8a4;
+    background: #06B6D4;
+    transform: translateY(-2px);
 }
 
 .btn-secundario {
-    background: #0077B5;
+    background: #1E293B; /* botão secundário escuro */
+    color: #F1F5F9;
+}
+
+.btn-secundario:hover {
+    background: #334155;
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #2d3436;
-    color: #2d3436;
+    border: 2px solid #22D3EE;
+    color: #22D3EE;
+}
+
+.btn-outline:hover {
+    background: #22D3EE;
+    color: #0B0F19;
 }
 
 #projetos, #sistemas {
-    background: #b2bec3;
+    background: #111827; /* contraste leve com fundo */
 }
 
 /* espaçamento interno extra entre as duas sections */
@@ -148,17 +160,18 @@ section {
 
 .card-projeto {
     width: 280px;
-    background: #fff;
+    background: #1E293B; /* card tech */
     padding: 25px;
     border-radius: 15px;
     text-decoration: none;
-    color: #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #F1F5F9;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
     transition: 0.3s;
 }
 
 .card-projeto:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(34,211,238,0.15);
 }
 
 .card-projeto img {
@@ -176,12 +189,12 @@ section {
 
 .contact-card {
     width: 260px;
-    background: #fff;
+    background: #1E293B;
     padding: 30px 20px;
     border-radius: 15px;
     text-decoration: none;
-    color: #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #F1F5F9;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
@@ -191,17 +204,18 @@ section {
 .contact-card i {
     font-size: 2.5em;
     margin-bottom: 15px;
-    color: #00cec9;
+    color: #22D3EE;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(34,211,238,0.15);
 }
 
 footer {
     height: 100px;
-    background: #2d3436;
-    color: #fff;
+    background: #111827;
+    color: #F1F5F9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -211,8 +225,8 @@ footer {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #2d3436;
-    color: #fff;
+    background: #22D3EE;
+    color: #0B0F19;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -233,4 +247,3 @@ footer {
     flex-direction: column; 
     text-align: center;
 }
-
