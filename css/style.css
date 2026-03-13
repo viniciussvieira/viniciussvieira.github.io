@@ -269,3 +269,90 @@ footer {
     flex-direction: column; 
     text-align: center;
 }
+
+/* --- RESPONSIVIDADE (Ajustes para Celular e Tablet) ---  13/03*/ 
+
+@media (max-width: 768px) {
+    /* Ajuste da Navegação */
+    nav {
+        padding: 0 20px;
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+
+    /* Ajuste da Seção Sobre */
+    #sobre {
+        padding: 100px 5% 40px;
+    }
+
+    .sobre-container {
+        flex-direction: column; /* Foto em cima, texto embaixo */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .sobre-texto {
+        text-align: center;
+    }
+
+    .sobre-texto p {
+        text-align: center; /* Melhor leitura no mobile */
+    }
+
+    .foto-perfil {
+        width: 180px; /* Foto um pouco menor no mobile */
+    }
+
+    .botoes {
+        justify-content: center; /* Centraliza botões no mobile */
+    }
+
+    /* Ajuste de Títulos */
+    #sobre h1 {
+        font-size: 1.8em;
+    }
+
+    /* Seções de Projetos, Sistemas e Contato */
+    #projetos, #sistemas, #contato {
+        padding-top: 100px;
+        min-height: auto;
+    }
+
+    .projetos-container, .sistemas-container, .contact-container {
+        gap: 20px;
+    }
+
+    .card-projeto, .contact-card {
+        width: 100%; /* Card ocupa a largura quase toda da tela */
+        max-width: 320px;
+    }
+
+    #scrollToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Ajuste para telas muito pequenas (Smartwatch ou iPhones antigos) */
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1.1em;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
