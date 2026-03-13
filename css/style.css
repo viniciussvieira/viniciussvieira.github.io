@@ -1,3 +1,13 @@
+:root {
+    --bg-primary: #0D1117;       /* Fundo principal */
+    --bg-secondary: #161B22;     /* Seções e Cards */
+    --text-main: #E6EDF3;        /* Texto claro */
+    --text-muted: #8B949E;       /* Texto secundário */
+    --accent: #58A6FF;           /* Azul de destaque */
+    --success: #30FB91;          /* Verde Neon (QA/Back-end vibe) */
+    --nav-bg: #010409;           /* Navbar */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,28 +17,30 @@
 
 html, body {
     height: 100%;
-    background: #dfe6e9;
-    color: #2d3436;
+    background: var(--bg-primary);
+    color: var(--text-main);
     scroll-behavior: smooth;
 }
 
+/* --- Navegação --- */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    background: #2d3436;
+    background: var(--nav-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
     z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    border-bottom: 1px solid #30363d;
 }
 
 nav .logo {
-    color: #ffffff;
+    color: var(--text-main);
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -47,10 +59,11 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #00cec9;
-    border-bottom: 2px solid #00cec9;
+    color: var(--success);
+    border-bottom: 2px solid var(--success);
 }
 
+/* --- Estrutura de Seções --- */
 section {
     padding: 100px 20px 60px;
     text-align: center;
@@ -71,8 +84,8 @@ section {
 .foto-perfil {
     width: 220px;
     border-radius: 50%;
-    border: 4px solid #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 4px solid var(--accent);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .sobre-texto {
@@ -86,7 +99,7 @@ section {
 }
 
 #sobre h3 {
-    color: #636e72;
+    color: var(--accent);
     margin-bottom: 25px;
 }
 
@@ -94,8 +107,10 @@ section {
     line-height: 1.8em;
     margin-bottom: 18px;
     text-align: justify;
+    color: var(--text-muted);
 }
 
+/* --- Botões --- */
 .botoes {
     display: flex;
     gap: 15px;
@@ -109,34 +124,31 @@ section {
     border-radius: 8px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .btn:hover {
-    background: #01a8a4;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
 }
 
 .btn-secundario {
-    background: #0077B5;
+    background: #0077B5; /* LinkedIn Blue */
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #2d3436;
-    color: #2d3436;
+    border: 2px solid var(--text-muted);
+    color: var(--text-muted);
 }
 
+/* --- Cards de Projetos e Sistemas --- */
 #projetos, #sistemas {
-    background: #b2bec3;
+    background: var(--bg-secondary);
 }
 
-/* espaçamento interno extra entre as duas sections */
-#projetos {
-    padding-bottom: 140px;
-}
-
-#sistemas {
-    padding-top: 140px;
-}
+#projetos { padding-bottom: 140px; }
+#sistemas { padding-top: 140px; }
 
 .projetos-container, .sistemas-container {
     display: flex;
@@ -148,24 +160,32 @@ section {
 
 .card-projeto {
     width: 280px;
-    background: #fff;
+    background: var(--bg-primary);
     padding: 25px;
     border-radius: 15px;
     text-decoration: none;
-    color: #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     transition: 0.3s;
+    border: 1px solid #30363d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-projeto:hover {
     transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
 .card-projeto img {
     width: 60px;
+    height: 60px;
+    object-fit: contain;
     margin-bottom: 15px;
 }
 
+/* --- Contato e Ajuste de Ícones --- */
 .contact-container {
     margin-top: 40px;
     display: flex;
@@ -176,42 +196,53 @@ section {
 
 .contact-card {
     width: 260px;
-    background: #fff;
+    background: var(--bg-secondary);
     padding: 30px 20px;
     border-radius: 15px;
     text-decoration: none;
-    color: #2d3436;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid #30363d;
 }
 
 .contact-card i {
     font-size: 2.5em;
     margin-bottom: 15px;
-    color: #00cec9;
+    color: var(--success);
+    /* Correção de Esquadro */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
+    border-color: var(--success);
 }
 
+/* --- Rodapé e Botão Voltar --- */
 footer {
     height: 100px;
-    background: #2d3436;
+    background: var(--nav-bg);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid #30363d;
 }
 
 #scrollToTopBtn {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #2d3436;
+    background: var(--accent);
     color: #fff;
     border-radius: 50%;
     width: 50px;
@@ -220,8 +251,13 @@ footer {
     font-size: 1.5em;
     opacity: 0;
     visibility: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* --- Layout Flex para Seções Principais --- */
 #projetos,
 #sistemas,
 #contato {
@@ -233,4 +269,3 @@ footer {
     flex-direction: column; 
     text-align: center;
 }
-
