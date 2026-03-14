@@ -1,3 +1,13 @@
+:root {
+    --bg-primary: #0D1117;       /* Fundo principal */
+    --bg-secondary: #161B22;     /* Seções e Cards */
+    --text-main: #E6EDF3;        /* Texto claro */
+    --text-muted: #8B949E;       /* Texto secundário */
+    --accent: #58A6FF;           /* Azul de destaque */
+    --success: #30FB91;          /* Verde Neon (QA/Back-end vibe) */
+    --nav-bg: #010409;           /* Navbar */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,28 +17,47 @@
 
 html, body {
     height: 100%;
+<<<<<<< HEAD
     background: #0B0F19; /* preto profundo moderno */
     color: #F1F5F9; /* branco suave */
+=======
+    background: var(--bg-primary);
+    color: var(--text-main);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     scroll-behavior: smooth;
 }
 
+/* --- Navegação --- */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
+<<<<<<< HEAD
     background: #111827; /* charcoal tech */
+=======
+    background: var(--nav-bg);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
     z-index: 10;
+<<<<<<< HEAD
     box-shadow: 0 2px 15px rgba(0,0,0,0.6);
 }
 
 nav .logo {
     color: #FFFFFF;
+=======
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    border-bottom: 1px solid #30363d;
+}
+
+nav .logo {
+    color: var(--text-main);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -47,10 +76,16 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+<<<<<<< HEAD
     color: #22D3EE; /* cyan elétrico */
     border-bottom: 2px solid #22D3EE;
+=======
+    color: var(--success);
+    border-bottom: 2px solid var(--success);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
+/* --- Estrutura de Seções --- */
 section {
     padding: 100px 20px 60px;
     text-align: center;
@@ -71,8 +106,13 @@ section {
 .foto-perfil {
     width: 220px;
     border-radius: 50%;
+<<<<<<< HEAD
     border: 4px solid #22D3EE; /* destaque tech */
     box-shadow: 0 4px 20px rgba(34,211,238,0.2);
+=======
+    border: 4px solid var(--accent);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
 .sobre-texto {
@@ -86,7 +126,11 @@ section {
 }
 
 #sobre h3 {
+<<<<<<< HEAD
     color: #94A3B8; /* cinza tech */
+=======
+    color: var(--accent);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     margin-bottom: 25px;
 }
 
@@ -94,8 +138,10 @@ section {
     line-height: 1.8em;
     margin-bottom: 18px;
     text-align: justify;
+    color: var(--text-muted);
 }
 
+/* --- Botões --- */
 .botoes {
     display: flex;
     gap: 15px;
@@ -113,6 +159,7 @@ section {
 }
 
 .btn:hover {
+<<<<<<< HEAD
     background: #06B6D4;
     transform: translateY(-2px);
 }
@@ -124,10 +171,19 @@ section {
 
 .btn-secundario:hover {
     background: #334155;
+=======
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
+}
+
+.btn-secundario {
+    background: #0077B5; /* LinkedIn Blue */
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
 .btn-outline {
     background: transparent;
+<<<<<<< HEAD
     border: 2px solid #22D3EE;
     color: #22D3EE;
 }
@@ -135,20 +191,23 @@ section {
 .btn-outline:hover {
     background: #22D3EE;
     color: #0B0F19;
+=======
+    border: 2px solid var(--text-muted);
+    color: var(--text-muted);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
+/* --- Cards de Projetos e Sistemas --- */
 #projetos, #sistemas {
+<<<<<<< HEAD
     background: #111827; /* contraste leve com fundo */
+=======
+    background: var(--bg-secondary);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
-/* espaçamento interno extra entre as duas sections */
-#projetos {
-    padding-bottom: 140px;
-}
-
-#sistemas {
-    padding-top: 140px;
-}
+#projetos { padding-bottom: 140px; }
+#sistemas { padding-top: 140px; }
 
 .projetos-container, .sistemas-container {
     display: flex;
@@ -160,25 +219,45 @@ section {
 
 .card-projeto {
     width: 280px;
+<<<<<<< HEAD
     background: #1E293B; /* card tech */
     padding: 25px;
     border-radius: 15px;
     text-decoration: none;
     color: #F1F5F9;
     box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+=======
+    background: var(--bg-primary);
+    padding: 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     transition: 0.3s;
+    border: 1px solid #30363d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-projeto:hover {
     transform: translateY(-5px);
+<<<<<<< HEAD
     box-shadow: 0 6px 30px rgba(34,211,238,0.15);
+=======
+    border-color: var(--accent);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
 .card-projeto img {
     width: 60px;
+    height: 60px;
+    object-fit: contain;
     margin-bottom: 15px;
 }
 
+/* --- Contato e Ajuste de Ícones --- */
 .contact-container {
     margin-top: 40px;
     display: flex;
@@ -189,44 +268,81 @@ section {
 
 .contact-card {
     width: 260px;
+<<<<<<< HEAD
     background: #1E293B;
     padding: 30px 20px;
     border-radius: 15px;
     text-decoration: none;
     color: #F1F5F9;
     box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+=======
+    background: var(--bg-secondary);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     transition: 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid #30363d;
 }
 
 .contact-card i {
     font-size: 2.5em;
     margin-bottom: 15px;
+<<<<<<< HEAD
     color: #22D3EE;
+=======
+    color: var(--success);
+    /* Correção de Esquadro */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
+<<<<<<< HEAD
     box-shadow: 0 6px 30px rgba(34,211,238,0.15);
+=======
+    border-color: var(--success);
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
 
+/* --- Rodapé e Botão Voltar --- */
 footer {
     height: 100px;
+<<<<<<< HEAD
     background: #111827;
     color: #F1F5F9;
+=======
+    background: var(--nav-bg);
+    color: #fff;
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid #30363d;
 }
 
 #scrollToTopBtn {
     position: fixed;
     bottom: 30px;
     right: 30px;
+<<<<<<< HEAD
     background: #22D3EE;
     color: #0B0F19;
+=======
+    background: var(--accent);
+    color: #fff;
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -234,8 +350,13 @@ footer {
     font-size: 1.5em;
     opacity: 0;
     visibility: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* --- Layout Flex para Seções Principais --- */
 #projetos,
 #sistemas,
 #contato {
@@ -246,4 +367,94 @@ footer {
     padding-top: 140px;
     flex-direction: column; 
     text-align: center;
+<<<<<<< HEAD
+=======
+}
+
+/* --- RESPONSIVIDADE (Ajustes para Celular e Tablet) ---  13/03*/ 
+
+@media (max-width: 768px) {
+    /* Ajuste da Navegação */
+    nav {
+        padding: 0 20px;
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.9em;
+    }
+
+    /* Ajuste da Seção Sobre */
+    #sobre {
+        padding: 100px 5% 40px;
+    }
+
+    .sobre-container {
+        flex-direction: column; /* Foto em cima, texto embaixo */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .sobre-texto {
+        text-align: center;
+    }
+
+    .sobre-texto p {
+        text-align: center; /* Melhor leitura no mobile */
+    }
+
+    .foto-perfil {
+        width: 180px; /* Foto um pouco menor no mobile */
+    }
+
+    .botoes {
+        justify-content: center; /* Centraliza botões no mobile */
+    }
+
+    /* Ajuste de Títulos */
+    #sobre h1 {
+        font-size: 1.8em;
+    }
+
+    /* Seções de Projetos, Sistemas e Contato */
+    #projetos, #sistemas, #contato {
+        padding-top: 100px;
+        min-height: auto;
+    }
+
+    .projetos-container, .sistemas-container, .contact-container {
+        gap: 20px;
+    }
+
+    .card-projeto, .contact-card {
+        width: 100%; /* Card ocupa a largura quase toda da tela */
+        max-width: 320px;
+    }
+
+    #scrollToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Ajuste para telas muito pequenas (Smartwatch ou iPhones antigos) */
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1.1em;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+>>>>>>> 71fa65b0be54e6619fcbfe2a13fb4ae1dc283d29
 }
