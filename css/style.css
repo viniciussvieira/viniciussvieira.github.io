@@ -211,6 +211,77 @@ section p {
     margin-bottom: 8px;
 }
 
+/* --- Skills por Categoria --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 30px;
+}
+
+.skill-card {
+    background: var(--bg-secondary);
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    padding: 24px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.skill-card-header i {
+    font-size: 1.4em;
+    color: var(--accent);
+    width: 28px;
+    text-align: center;
+}
+
+.skill-card-header h3 {
+    font-size: 1.1em;
+}
+
+.skill-card p {
+    font-size: 0.92em;
+    line-height: 1.5em;
+    margin-bottom: 16px;
+}
+
+.skill-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tags li {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+#sobre h3.headline span {
+    color: var(--text-muted);
+    margin: 0 4px;
+}
+
 /* --- Contato e Ajuste de Ícones --- */
 .contact-container {
     margin-top: 40px;
@@ -405,6 +476,12 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* --- RESPONSIVIDADE (Ajustes para Celular e Tablet) ---  13/03*/ 
 
 @media (max-width: 768px) {
@@ -483,6 +560,11 @@ footer {
     .contact-form .btn {
         align-self: stretch;
         justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
     }
 
     #scrollToTopBtn {
