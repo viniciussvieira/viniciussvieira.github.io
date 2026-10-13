@@ -56,11 +56,13 @@ nav ul li a {
     text-decoration: none;
     transition: all 0.3s;
     padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
     color: var(--success);
-    border-bottom: 2px solid var(--success);
+    border-bottom-color: var(--success);
 }
 
 /* --- Estrutura de Seções --- */
@@ -106,8 +108,13 @@ section {
 #sobre p {
     line-height: 1.8em;
     margin-bottom: 18px;
-    text-align: justify;
+    text-align: left;
     color: var(--text-muted);
+}
+
+#sobre p strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 /* --- Botões --- */
@@ -118,37 +125,53 @@ section {
 }
 
 .btn {
-    background: #000;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    border: 2px solid var(--accent);
     padding: 10px 25px;
     border-radius: 8px;
     text-decoration: none;
     transition: 0.3s;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .btn:hover {
-    background: var(--accent);
+    background: #79B8FF;
+    border-color: #79B8FF;
     box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
-}
-
-.btn-secundario {
-    background: #0077B5; /* LinkedIn Blue */
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid var(--text-muted);
-    color: var(--text-muted);
+    border-color: #30363d;
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    background: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* --- Cards de Projetos e Sistemas --- */
-#projetos, #sistemas {
+#projetos, #contato {
     background: var(--bg-secondary);
 }
 
-#projetos { padding-bottom: 140px; }
-#sistemas { padding-top: 140px; }
+#sistemas {
+    background: var(--bg-primary);
+}
+
+#sistemas .card-projeto {
+    background: var(--bg-secondary);
+}
+
+section p {
+    color: var(--text-muted);
+}
 
 .projetos-container, .sistemas-container {
     display: flex;
@@ -178,11 +201,14 @@ section {
     border-color: var(--accent);
 }
 
-.card-projeto img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+.card-icon {
+    font-size: 3em;
+    color: var(--accent);
     margin-bottom: 15px;
+}
+
+.card-projeto h3 {
+    margin-bottom: 8px;
 }
 
 /* --- Contato e Ajuste de Ícones --- */
@@ -195,8 +221,8 @@ section {
 }
 
 .contact-card {
-    width: 260px;
-    background: var(--bg-secondary);
+    width: 300px;
+    background: var(--bg-primary);
     padding: 30px 20px;
     border-radius: 15px;
     text-decoration: none;
@@ -220,6 +246,13 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.contact-card span {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+    margin-top: 4px;
 }
 
 .contact-card:hover {
@@ -251,21 +284,26 @@ footer {
     font-size: 1.5em;
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+#scrollToTopBtn:hover {
+    transform: translateY(-3px);
+}
+
 /* --- Layout Flex para Seções Principais --- */
 #projetos,
 #sistemas,
 #contato {
-    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 140px;
+    padding-top: 110px;
+    padding-bottom: 90px;
     flex-direction: column; 
     text-align: center;
 }
@@ -324,8 +362,8 @@ footer {
 
     /* Seções de Projetos, Sistemas e Contato */
     #projetos, #sistemas, #contato {
-        padding-top: 100px;
-        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: 60px;
     }
 
     .projetos-container, .sistemas-container, .contact-container {
