@@ -6,68 +6,99 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.menu a');
 
-// Settings for the Intersection Observer
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-// A threshold of 0.5 means that 50% of the section must be visible
-// to be considered the 'active' section.
-        threshold: 0.5 
-    };
-
+// A section becomes 'active' when it crosses the middle of the screen.
+// This works even for sections taller than the viewport (e.g. Skills on mobile).
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const currentSectionId = entry.target.id;
-//Remove the 'active' highlight from all links.
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-
-// Adds highlighting to the link that corresponds to the visible section.
-                const targetLink = document.querySelector(`.menu a[href="#${currentSectionId}"]`);
+                navLinks.forEach(link => link.classList.remove('active'));
+                const targetLink = document.querySelector(`.menu a[href="#${entry.target.id}"]`);
                 if (targetLink) {
                     targetLink.classList.add('active');
                 }
             }
         });
-    }, observerOptions);
-// Start looking at all the main sections
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
+    }, { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 });
 
+    sections.forEach(section => sectionObserver.observe(section));
 
 
 // ===========================================
-// 2. "Back to Top" Button
+// 2. Mobile Menu (hamburger)
 // ===========================================
-    const scrollToTopButton = document.getElementById('scrollToTopBtn');
+    const nav = document.querySelector('nav');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-    if (scrollToTopButton) {
-// Show/hide the button based on the scroll position.
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopButton.style.opacity = '1';
-                scrollToTopButton.style.visibility = 'visible';
-            } else {
-                scrollToTopButton.style.opacity = '0';
-                scrollToTopButton.style.visibility = 'hidden';
-            }
+    if (nav && menuToggle) {
+        const setMenu = (open) => {
+            nav.classList.toggle('menu-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        };
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!nav.classList.contains('menu-open'));
         });
 
-// Click event to smoothly scroll to the top
-        scrollToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+// Close the menu after choosing a section, pressing Esc, or tapping outside
+        navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setMenu(false);
+        });
+        document.addEventListener('click', (event) => {
+            if (!nav.contains(event.target)) setMenu(false);
         });
     }
 
 
 // ===========================================
-// 3. Contact Form (Web3Forms -> email)
+// 3. "Back to Top" Button
+// ===========================================
+    const scrollToTopButton = document.getElementById('scrollToTopBtn');
+
+    if (scrollToTopButton) {
+        window.addEventListener('scroll', () => {
+            const show = window.scrollY > 300;
+            scrollToTopButton.style.opacity = show ? '1' : '0';
+            scrollToTopButton.style.visibility = show ? 'visible' : 'hidden';
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+
+// ===========================================
+// 4. Reveal Sections on Scroll
+// ===========================================
+// Classes are added here (not in the HTML) so content stays visible if JS fails.
+    const revealItems = document.querySelectorAll(
+        'main section:not(#sobre) h2, main section:not(#sobre) > p, .skill-card, .contact-form'
+    );
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealItems.forEach((item, index) => {
+            item.classList.add('reveal');
+            if (item.classList.contains('skill-card')) {
+                item.style.transitionDelay = `${(index % 3) * 80}ms`;
+            }
+            revealObserver.observe(item);
+        });
+    }
+
+
+// ===========================================
+// 5. Contact Form (Web3Forms -> email)
 // ===========================================
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');

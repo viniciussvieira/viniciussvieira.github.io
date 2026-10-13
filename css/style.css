@@ -3,23 +3,44 @@
     --bg-secondary: #161B22;     /* Seções e Cards */
     --text-main: #E6EDF3;        /* Texto claro */
     --text-muted: #8B949E;       /* Texto secundário */
-    --accent: #58A6FF;           /* Azul de destaque */
-    --success: #30FB91;          /* Verde Neon (QA/Back-end vibe) */
-    --nav-bg: #010409;           /* Navbar */
+    --accent: #58A6FF;           /* Azul de destaque (cor única da marca) */
+    --accent-hover: #79B8FF;     /* Azul mais claro para hover */
+    --success: #3FB950;          /* Verde: somente mensagens de sucesso */
+    --error: #F85149;            /* Vermelho: mensagens de erro */
+    --border: #30363d;           /* Bordas */
+    --nav-bg: #010409;           /* Navbar e rodapé */
+    --nav-height: 70px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
 }
 
-html, body {
-    height: 100%;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+}
+
+body {
     background: var(--bg-primary);
     color: var(--text-main);
-    scroll-behavior: smooth;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea {
+    font-family: inherit;
+}
+
+/* --- Acessibilidade: foco visível para navegação por teclado --- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
 }
 
 /* --- Navegação --- */
@@ -28,7 +49,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: var(--nav-height);
     background: var(--nav-bg);
     display: flex;
     align-items: center;
@@ -36,13 +57,14 @@ nav {
     padding: 0 5%;
     z-index: 10;
     box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    border-bottom: 1px solid #30363d;
+    border-bottom: 1px solid var(--border);
 }
 
 nav .logo {
     color: var(--text-main);
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.3em;
+    text-decoration: none;
 }
 
 nav ul {
@@ -52,42 +74,85 @@ nav ul {
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: var(--text-main);
     text-decoration: none;
-    transition: all 0.3s;
+    transition: color 0.3s, border-color 0.3s;
     padding-bottom: 3px;
     border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: var(--success);
-    border-bottom-color: var(--success);
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
+
+/* Botão do menu (☰) - só aparece no celular */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+nav.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+nav.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* --- Estrutura de Seções --- */
 section {
-    padding: 100px 20px 60px;
+    padding: 100px 20px 90px;
     text-align: center;
 }
 
+section h2 {
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+section p {
+    color: var(--text-muted);
+}
+
+/* --- Sobre (Hero ocupando a tela) --- */
 #sobre {
-    padding: 120px 10%;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--nav-height) + 40px) 10% 60px;
 }
 
 .sobre-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px;
 }
 
 .foto-perfil {
-    width: 220px;
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 4px solid var(--accent);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 8px rgba(88, 166, 255, 0.08), 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .sobre-texto {
@@ -96,20 +161,26 @@ section {
 }
 
 #sobre h1 {
-    font-size: 2.4em;
+    font-size: 2.8em;
+    line-height: 1.2;
     margin-bottom: 10px;
 }
 
 #sobre h3 {
     color: var(--accent);
+    font-size: 1.2em;
     margin-bottom: 25px;
+}
+
+#sobre h3.headline span {
+    color: var(--text-muted);
+    margin: 0 4px;
 }
 
 #sobre p {
     line-height: 1.8em;
     margin-bottom: 18px;
     text-align: left;
-    color: var(--text-muted);
 }
 
 #sobre p strong {
@@ -122,6 +193,7 @@ section {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .btn {
@@ -136,17 +208,18 @@ section {
     text-decoration: none;
     transition: 0.3s;
     font-weight: 600;
+    font-size: 1em;
 }
 
 .btn:hover {
-    background: #79B8FF;
-    border-color: #79B8FF;
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
     box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
 }
 
 .btn-outline {
     background: transparent;
-    border-color: #30363d;
+    border-color: var(--border);
     color: var(--text-main);
 }
 
@@ -156,79 +229,28 @@ section {
     color: var(--accent);
 }
 
-/* --- Cards de Projetos e Sistemas --- */
-#projetos, #contato {
-    background: var(--bg-secondary);
-}
-
-#sistemas {
-    background: var(--bg-primary);
-}
-
-#sistemas .card-projeto {
-    background: var(--bg-secondary);
-}
-
-section p {
-    color: var(--text-muted);
-}
-
-.projetos-container, .sistemas-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.card-projeto {
-    width: 280px;
-    background: var(--bg-primary);
-    padding: 25px;
-    border-radius: 15px;
-    text-decoration: none;
-    color: var(--text-main);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-    border: 1px solid #30363d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card-projeto:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-}
-
-.card-icon {
-    font-size: 3em;
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-
-.card-projeto h3 {
-    margin-bottom: 8px;
-}
-
 /* --- Skills por Categoria --- */
+#sistemas {
+    background: var(--bg-secondary);
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     width: 100%;
     max-width: 1100px;
-    margin-top: 30px;
+    margin: 30px auto 0;
 }
 
 .skill-card {
-    background: var(--bg-secondary);
-    border: 1px solid #30363d;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
     border-radius: 15px;
     padding: 24px;
     text-align: left;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .skill-card:hover {
@@ -277,67 +299,18 @@ section p {
     font-weight: 500;
 }
 
-#sobre h3.headline span {
-    color: var(--text-muted);
-    margin: 0 4px;
-}
-
-/* --- Contato e Ajuste de Ícones --- */
+/* --- Contato (Formulário) --- */
 .contact-container {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
-.contact-card {
-    width: 300px;
-    background: var(--bg-primary);
-    padding: 30px 20px;
-    border-radius: 15px;
-    text-decoration: none;
-    color: var(--text-main);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #30363d;
-}
-
-.contact-card i {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-    color: var(--success);
-    /* Correção de Esquadro */
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.contact-card span {
-    color: var(--text-muted);
-    font-size: 0.9em;
-    overflow-wrap: anywhere;
-    margin-top: 4px;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--success);
-}
-
-/* --- Formulário de Contato --- */
 .contact-form {
     width: 100%;
     max-width: 560px;
-    background: var(--bg-primary);
-    border: 1px solid #30363d;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     border-radius: 15px;
     padding: 30px;
     text-align: left;
@@ -372,13 +345,12 @@ section p {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    background: var(--bg-secondary);
-    border: 1px solid #30363d;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 12px 14px;
     color: var(--text-main);
     font-size: 1em;
-    font-family: inherit;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -402,8 +374,6 @@ section p {
 .contact-form .btn {
     align-self: flex-start;
     cursor: pointer;
-    font-size: 1em;
-    font-family: inherit;
 }
 
 .contact-form .btn:disabled {
@@ -422,34 +392,49 @@ section p {
 }
 
 .form-status.success { color: var(--success); }
-.form-status.error { color: #F85149; }
+.form-status.error { color: var(--error); }
 
-.contact-container {
-    align-items: stretch;
-}
-
-/* --- Rodapé e Botão Voltar --- */
+/* --- Rodapé --- */
 footer {
-    height: 100px;
     background: var(--nav-bg);
-    color: #fff;
+    color: var(--text-muted);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #30363d;
+    gap: 14px;
+    padding: 32px 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.95em;
 }
 
+.footer-social {
+    display: flex;
+    gap: 18px;
+}
+
+.footer-social a {
+    color: var(--text-muted);
+    font-size: 1.4em;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: var(--accent);
+}
+
+/* --- Botão Voltar ao Topo --- */
 #scrollToTopBtn {
     position: fixed;
     bottom: 30px;
     right: 30px;
     background: var(--accent);
-    color: #fff;
+    color: var(--bg-primary);
     border-radius: 50%;
     width: 50px;
     height: 50px;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.3em;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
@@ -457,24 +442,44 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 9;
 }
 
 #scrollToTopBtn:hover {
     transform: translateY(-3px);
 }
 
-/* --- Layout Flex para Seções Principais --- */
-#projetos,
-#sistemas,
-#contato {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 110px;
-    padding-bottom: 90px;
-    flex-direction: column; 
-    text-align: center;
+/* --- Animação de entrada ao rolar --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .skill-card,
+    #scrollToTopBtn,
+    .btn {
+        transition: none;
+    }
+}
+
+/* --- RESPONSIVIDADE (Ajustes para Tablet e Celular) --- */
 
 @media (max-width: 1024px) {
     .skills-grid {
@@ -482,71 +487,99 @@ footer {
     }
 }
 
-/* --- RESPONSIVIDADE (Ajustes para Celular e Tablet) ---  13/03*/ 
-
 @media (max-width: 768px) {
-    /* Ajuste da Navegação */
+    :root {
+        --nav-height: 64px;
+    }
+
+    /* Navegação: menu compacto (☰) */
     nav {
-        padding: 0 20px;
-        height: auto;
-        flex-direction: column;
-        padding-bottom: 15px;
+        padding: 0 12px 0 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
     }
 
     nav ul {
-        gap: 15px;
-        margin-top: 10px;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: var(--nav-bg);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+    }
+
+    nav.menu-open ul {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
     }
 
     nav ul li a {
-        font-size: 0.9em;
+        display: block;
+        padding: 14px 24px;
+        border-bottom: none;
+        border-left: 3px solid transparent;
     }
 
-    /* Ajuste da Seção Sobre */
+    nav ul li a:hover,
+    nav ul li a.active {
+        border-left-color: var(--accent);
+        background: rgba(88, 166, 255, 0.06);
+    }
+
+    /* Sobre: foto em cima, texto embaixo */
     #sobre {
-        padding: 100px 5% 40px;
+        padding: calc(var(--nav-height) + 30px) 6% 50px;
     }
 
     .sobre-container {
-        flex-direction: column; /* Foto em cima, texto embaixo */
-        text-align: center;
-        gap: 20px;
+        flex-direction: column;
+        gap: 24px;
     }
 
     .sobre-texto {
         text-align: center;
     }
 
-    .sobre-texto p {
-        text-align: center; /* Melhor leitura no mobile */
+    .foto-perfil {
+        width: 170px;
+        height: 170px;
     }
 
-    .foto-perfil {
-        width: 180px; /* Foto um pouco menor no mobile */
+    #sobre h1 {
+        font-size: 2em;
+    }
+
+    #sobre h3 {
+        font-size: 1.05em;
     }
 
     .botoes {
-        justify-content: center; /* Centraliza botões no mobile */
+        justify-content: center;
     }
 
-    /* Ajuste de Títulos */
-    #sobre h1 {
-        font-size: 1.8em;
+    /* Seções */
+    section {
+        padding: 70px 20px 60px;
     }
 
-    /* Seções de Projetos, Sistemas e Contato */
-    #projetos, #sistemas, #contato {
-        padding-top: 90px;
-        padding-bottom: 60px;
+    section h2 {
+        font-size: 1.7em;
     }
 
-    .projetos-container, .sistemas-container, .contact-container {
-        gap: 20px;
-    }
-
-    .card-projeto, .contact-card {
-        width: 100%; /* Card ocupa a largura quase toda da tela */
-        max-width: 320px;
+    .skills-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
     }
 
     .form-row {
@@ -562,27 +595,24 @@ footer {
         justify-content: center;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-    }
-
     #scrollToTopBtn {
         bottom: 20px;
         right: 20px;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
 }
 
-/* Ajuste para telas muito pequenas (Smartwatch ou iPhones antigos) */
+/* Ajuste para celulares menores: botões empilhados */
 @media (max-width: 480px) {
-    nav .logo {
-        font-size: 1.1em;
+    .botoes {
+        flex-direction: column;
+        max-width: 320px;
+        margin: 10px auto 0;
     }
-    
-    nav ul {
-        flex-wrap: wrap;
+
+    .botoes .btn {
+        width: 100%;
         justify-content: center;
     }
 }

@@ -13,16 +13,23 @@
     <meta property="og:image" content="https://viniciussvieira.github.io/img/profilepic.jpg">
     <meta name="twitter:card" content="summary">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Vinicius Vieira</div>
-            <ul class="menu">
+            <a href="#sobre" class="logo">Vinicius Vieira</a>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu" id="menu">
                 <li><a href="#sobre">About</a></li>
-                <li><a href="#projetos">Links</a></li>
                 <li><a href="#sistemas">Skills</a></li>
                 <li><a href="#contato">Contact</a></li>
             </ul>
@@ -52,25 +59,6 @@
                         <a href="https://www.linkedin.com/in/viniciusdsvieira/" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="projetos">
-            <h2>Find Me Online</h2>
-            <p>Follow my repositories and professional connections:</p>
-
-            <div class="projetos-container">
-                <a href="https://github.com/viniciussvieira" target="_blank" rel="noopener" class="card-projeto">
-                    <i class="fab fa-github card-icon" aria-hidden="true"></i>
-                    <h3>Vinicius Vieira's GitHub</h3>
-                    <p>See my QA projects, scripts, and automations.</p>
-                </a>
-
-                <a href="https://www.linkedin.com/in/viniciusdsvieira/" target="_blank" rel="noopener" class="card-projeto">
-                    <i class="fab fa-linkedin card-icon" aria-hidden="true"></i>
-                    <h3>Vinicius Vieira's LinkedIn</h3>
-                    <p>Connect with me and follow my professional journey.</p>
-                </a>
             </div>
         </section>
 
@@ -197,6 +185,10 @@
     </main>
 
     <footer>
+        <div class="footer-social">
+            <a href="https://github.com/viniciussvieira" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/viniciusdsvieira/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
         <p>© 2026 Vinicius Vieira — All rights reserved.</p>
     </footer>
 
