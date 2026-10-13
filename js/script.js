@@ -64,4 +64,47 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+// ===========================================
+// 3. Contact Form (Web3Forms -> email)
+// ===========================================
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalLabel = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(contactForm)
+                });
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    formStatus.textContent = 'Thanks! Your message was sent. I will get back to you soon.';
+                    formStatus.classList.add('success');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.message || 'Request failed');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Sorry, something went wrong. Please try again or reach me on LinkedIn.';
+                formStatus.classList.add('error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalLabel;
+            }
+        });
+    }
 });

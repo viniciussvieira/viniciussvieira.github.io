@@ -232,6 +232,7 @@ section p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border: 1px solid #30363d;
 }
 
@@ -258,6 +259,102 @@ section p {
 .contact-card:hover {
     transform: translateY(-5px);
     border-color: var(--success);
+}
+
+/* --- Formulário de Contato --- */
+.contact-form {
+    width: 100%;
+    max-width: 560px;
+    background: var(--bg-primary);
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.form-row {
+    display: flex;
+    gap: 18px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text-main);
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #6E7681;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.contact-form .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.form-status {
+    min-height: 1.2em;
+    font-size: 0.95em;
+    margin: 0;
+}
+
+.form-status.success { color: var(--success); }
+.form-status.error { color: #F85149; }
+
+.contact-container {
+    align-items: stretch;
 }
 
 /* --- Rodapé e Botão Voltar --- */
@@ -373,6 +470,19 @@ footer {
     .card-projeto, .contact-card {
         width: 100%; /* Card ocupa a largura quase toda da tela */
         max-width: 320px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .contact-form {
+        padding: 22px;
+    }
+
+    .contact-form .btn {
+        align-self: stretch;
+        justify-content: center;
     }
 
     #scrollToTopBtn {
